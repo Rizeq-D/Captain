@@ -36,14 +36,20 @@ class MainActivity : ComponentActivity() {
 fun CaptainGame() {
     val treasuresFound = remember { mutableStateOf(0) }
     val direction = remember { mutableStateOf("North") }
+    val stormOrTreasure = remember { mutableStateOf("") }
     
     Column {
         Text(text = "Treasure Found: ${treasuresFound.value}")
         Text(text = "Current Direction: ${direction.value}")
+        Text(text = stormOrTreasure.value)
         Button(onClick = {
             direction.value = "East"
             if (Random.nextBoolean()) {
                 treasuresFound.value += 1
+                stormOrTreasure.value = "Found a Treasure"
+            }else{
+                treasuresFound.value -= 1
+                stormOrTreasure.value = "Storm ahead!!!"
             }
         }) {
             Text(text = "Sail East")
@@ -53,7 +59,11 @@ fun CaptainGame() {
             direction.value = "South"
             if (Random.nextBoolean()) {
                 treasuresFound.value += 1
-            }
+                stormOrTreasure.value = "Found a Treasure"
+            }else{
+                treasuresFound.value -= 1
+                stormOrTreasure.value = "Storm ahead!!!"
+        }
         }) {
             Text(text = "Sail South")
         }
@@ -62,7 +72,11 @@ fun CaptainGame() {
             direction.value = "West"
             if (Random.nextBoolean()) {
                 treasuresFound.value += 1
-            }
+                stormOrTreasure.value = "Found a Treasure"
+            }else{
+                treasuresFound.value -= 1
+                stormOrTreasure.value = "Storm ahead!!!"
+        }
         }) {
             Text(text = "Sail West")
         }
@@ -71,7 +85,11 @@ fun CaptainGame() {
             direction.value = "North"
             if (Random.nextBoolean()) {
                 treasuresFound.value += 1
-            }
+                stormOrTreasure.value = "Found a Treasure"
+            }else{
+                treasuresFound.value -= 1
+                stormOrTreasure.value = "Storm ahead!!!"
+        }
         }) {
             Text(text = "Sail North")
         }
